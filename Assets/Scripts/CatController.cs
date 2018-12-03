@@ -2,7 +2,7 @@
 
 public class CatController : MonoBehaviour
 {
-	public float soundTriggerDistance = 10;
+	public float soundTriggerDistance = 2;
 	
 	private AudioSource audioSource;
 	private GameObject player;

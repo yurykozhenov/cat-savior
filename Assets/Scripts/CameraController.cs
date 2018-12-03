@@ -2,8 +2,10 @@
 
 public class CameraController : MonoBehaviour
 {
-	public float xThreshold = 4.11f;
-	public float yThreshold = 2.2f;
+	public float xThresholdStart = 2.22f;
+	public float yThresholdStart = 1.13f;
+	public float xThresholdEnd = 17.28f;
+	public float yThresholdEnd = 5.50776f;
 	
 	private GameObject player;
 	private Vector3 offset;
@@ -25,14 +27,24 @@ public class CameraController : MonoBehaviour
 		
 		var newPosition = player.transform.position + offset;
 
-		if (newPosition.x < xThreshold)
+		if (newPosition.x < xThresholdStart)
 		{
-			newPosition.x = xThreshold;
+			newPosition.x = xThresholdStart;
+		}
+		
+		if (newPosition.x > xThresholdEnd)
+		{
+			newPosition.x = xThresholdEnd;
 		}
 
-		if (newPosition.y < yThreshold)
+		if (newPosition.y < yThresholdStart)
 		{
-			newPosition.y = yThreshold;
+			newPosition.y = yThresholdStart;
+		}
+		
+		if (newPosition.y > yThresholdEnd)
+		{
+			newPosition.y = yThresholdEnd;
 		}
 		
 		transform.position = newPosition;

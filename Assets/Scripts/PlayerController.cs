@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 
 	private bool grounded;
 	public Transform groundCheck;
-	private float groundRadius = 0.2f;
+	private float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
 
 	private Vector3 startingPosition;
@@ -26,14 +26,12 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		if (transform.position.y < 0)
-		{
-			transform.position = startingPosition;
-			return;
-		}
-		
-		
-		
+//		if (transform.position.y < 0)
+//		{
+//			transform.position = startingPosition;
+//			return;
+//		}
+
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 		
 		var moveHorizontal = Input.GetAxis("Horizontal");
