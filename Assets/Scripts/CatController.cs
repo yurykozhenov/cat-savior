@@ -28,9 +28,8 @@ public class CatController : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			audioSource.Stop();
-			Camera.main.GetComponent<AudioSource>().Play();
-			Time.timeScale = 0;
+			GameManager.CollectCat();
+			Destroy(gameObject);
 		}
 	}
 }

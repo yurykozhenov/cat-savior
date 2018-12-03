@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	private void OnCollisionEnter(Collision other)
+	{
+		rb.velocity = Vector2.zero;
+	}
+
 	void Flip()
 	{
 		facingRight = !facingRight;

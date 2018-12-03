@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CatsText
   layers:
   - Default
   - TransparentFX
@@ -42,9 +43,6 @@ TagManager:
     uniqueID: 57682261
     locked: 0
   - name: Background
-    uniqueID: 3042211585
-    locked: 0
-  - name: Front Background
     uniqueID: 2176331385
     locked: 0
   - name: Default
