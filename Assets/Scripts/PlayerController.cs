@@ -2,7 +2,7 @@
 
 public class PlayerController : MonoBehaviour {
 	public float moveSpeed = 3;
-	public float jumpForce = 500;
+	public float jumpForce = 330;
 	public bool facingRight = true;
 
 	private Rigidbody2D rb;

@@ -5,14 +5,12 @@ public class CameraController : MonoBehaviour
 	public float xThreshold = 4.11f;
 	public float yThreshold = 2.2f;
 	
-	private Transform transform;
 	private GameObject player;
 	private Vector3 offset;
 
 	// Use this for initialization
 	void Start ()
 	{
-		transform = GetComponent<Transform>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		offset = transform.position - player.transform.position;
 	}
