@@ -2,7 +2,7 @@
 
 public class CameraController : MonoBehaviour
 {
-	public float xThresholdStart = 2.22f;
+	public float xThresholdStart = 1.95f;
 	public float yThresholdStart = 1.13f;
 	public float xThresholdEnd = 17.28f;
 	public float yThresholdEnd = 5.50776f;

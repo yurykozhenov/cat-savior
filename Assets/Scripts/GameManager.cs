@@ -5,11 +5,19 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 	public static int catsCollected;
 
+	void Start()
+	{
+		SetText();
+	}
+
 	public static void CollectCat()
 	{
 		catsCollected += 1;
-		
-		var text = GameObject.FindGameObjectWithTag("CatsText");
-		text.GetComponent<Text>().text = String.Format("Cats collected: {0}", catsCollected);
+		SetText();
+	}
+
+	private static void SetText()
+	{
+		GameObject.FindGameObjectWithTag("CatsText").GetComponent<Text>().text = String.Format("CATS: {0}/3", catsCollected);
 	}
 }

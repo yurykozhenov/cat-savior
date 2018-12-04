@@ -1,12 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
-	public float moveSpeed = 3;
-	public float jumpForce = 330;
+	public float moveSpeed = 2.5f;
+	public float jumpForce = 250;
 	public bool facingRight = true;
+	public int health = 100;
 
 	private Rigidbody2D rb;
 	private Animator animator;
+//	private SpriteRenderer renderer;
 
 	private bool grounded;
 	public Transform groundCheck;
@@ -21,17 +25,13 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		startingPosition = transform.position;
+
+		ChangeHealthText();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-//		if (transform.position.y < 0)
-//		{
-//			transform.position = startingPosition;
-//			return;
-//		}
-
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 		
 		var moveHorizontal = Input.GetAxis("Horizontal");
@@ -54,17 +54,32 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private void OnCollisionEnter(Collision other)
-	{
-		rb.velocity = Vector2.zero;
-	}
-
-	void Flip()
+	private void Flip()
 	{
 		facingRight = !facingRight;
 		
 		var scale = transform.localScale;
 		scale.x *= -1;
 		transform.localScale = scale;
+	}
+
+	public void DamagePlayer(int damage)
+	{
+		health -= damage;
+		
+		if (health <= 0)
+		{
+			health = 0;
+			GameObject.FindGameObjectWithTag("GameOverText").GetComponent<Text>().text = "SACRIFICE ACCEPTED";
+			Time.timeScale = 0;
+			Destroy(gameObject);
+		}
+
+		ChangeHealthText();
+	}
+
+	private void ChangeHealthText()
+	{ 
+		GameObject.FindGameObjectWithTag("HealthText").GetComponent<Text>().text = String.Format("HP: {0}", health);
 	}
 }
