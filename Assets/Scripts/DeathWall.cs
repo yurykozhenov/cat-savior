@@ -9,7 +9,7 @@ public class DeathWall : MonoBehaviour
 		transform.localScale += Vector3.right * speed;
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		Destroy(other.gameObject);
 	}

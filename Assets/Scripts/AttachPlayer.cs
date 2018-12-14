@@ -9,7 +9,7 @@ public class AttachPlayer : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject == player)
 		{
@@ -17,7 +17,7 @@ public class AttachPlayer : MonoBehaviour
 		}
 	}
 	
-	private void OnTriggerExit2D(Collider2D other)
+	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject == player)
 		{

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -18,6 +17,6 @@ public class GameManager : MonoBehaviour {
 
 	private static void SetText()
 	{
-		GameObject.FindGameObjectWithTag("CatsText").GetComponent<Text>().text = String.Format("CATS: {0}/3", catsCollected);
+		GameObject.FindGameObjectWithTag("CatsText").GetComponent<Text>().text = $"CATS: {catsCollected}/3";
 	}
 }

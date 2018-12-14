@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
@@ -80,6 +79,6 @@ public class PlayerController : MonoBehaviour {
 
 	private void ChangeHealthText()
 	{ 
-		GameObject.FindGameObjectWithTag("HealthText").GetComponent<Text>().text = String.Format("HP: {0}", health);
+		GameObject.FindGameObjectWithTag("HealthText").GetComponent<Text>().text = $"HP: {health}";
 	}
 }

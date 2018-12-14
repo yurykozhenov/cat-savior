@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
 			return;
 		}
 		
+		// TODO: Maybe there's a better way to lock camera to borders?
+		// Yes! Detach camera using player position, not camera position!
 		var newPosition = player.transform.position + offset;
 
 		if (newPosition.x < xThresholdStart)
