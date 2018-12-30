@@ -6,24 +6,28 @@ public class PlayerController : MonoBehaviour {
 	public float jumpForce = 250;
 	public bool facingRight = true;
 	public int health = 100;
-
-	private Rigidbody2D rb;
-	private Animator animator;
-//	private SpriteRenderer renderer;
-
-	private bool grounded;
-	public Transform groundCheck;
-	private float groundRadius = 0.1f;
-	public LayerMask whatIsGround;
-
-	private Vector3 startingPosition;
 	
+	public Transform groundCheck;
+	public float groundRadius = 0.1f;
+	public LayerMask whatIsGround;
+	bool grounded;
+	
+	Rigidbody2D rb;
+	Animator animator;
+
+	Text gameOverText;
+	Text healthText;
+
+	static readonly int Speed = Animator.StringToHash("Speed");
+
 	// Use this for initialization
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
-		startingPosition = transform.position;
+
+		healthText = GameObject.FindGameObjectWithTag("HealthText").GetComponent<Text>();
+		gameOverText = GameObject.FindGameObjectWithTag("GameOverText").GetComponent<Text>();
 
 		ChangeHealthText();
 	}
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 		
 		var moveHorizontal = Input.GetAxis("Horizontal");
 		
-		animator.SetFloat("Speed", Mathf.Abs(moveHorizontal));
+		animator.SetFloat(Speed, Mathf.Abs(moveHorizontal));
 		
 		rb.velocity = new Vector2(moveHorizontal * moveSpeed, rb.velocity.y);
 
@@ -47,19 +51,20 @@ public class PlayerController : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space) && grounded)
+		if (Input.GetButtonDown("Jump") && grounded)
 		{
 			rb.AddForce(Vector2.up * jumpForce);
 		}
 	}
 
-	private void Flip()
+	void Flip()
 	{
 		facingRight = !facingRight;
-		
-		var scale = transform.localScale;
+
+		var transform1 = transform;
+		var scale = transform1.localScale;
 		scale.x *= -1;
-		transform.localScale = scale;
+		transform1.localScale = scale;
 	}
 
 	public void DamagePlayer(int damage)
@@ -69,7 +74,7 @@ public class PlayerController : MonoBehaviour {
 		if (health <= 0)
 		{
 			health = 0;
-			GameObject.FindGameObjectWithTag("GameOverText").GetComponent<Text>().text = "SACRIFICE ACCEPTED";
+			gameOverText.text = "SACRIFICE ACCEPTED";
 			Time.timeScale = 0;
 			Destroy(gameObject);
 		}
@@ -77,8 +82,8 @@ public class PlayerController : MonoBehaviour {
 		ChangeHealthText();
 	}
 
-	private void ChangeHealthText()
+	void ChangeHealthText()
 	{ 
-		GameObject.FindGameObjectWithTag("HealthText").GetComponent<Text>().text = $"HP: {health}";
+		healthText.text = $"HP: {health}";
 	}
 }

@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
-	public static int catsCollected;
+public class GameManager : MonoBehaviour
+{
+	static int catsCollected;
+	static int totalCats;
 
-	void Start()
+	static Text catsText;
+
+	void Awake()
 	{
+		catsText = GameObject.FindGameObjectWithTag("CatsText").GetComponent<Text>();
+		
+		totalCats = GameObject.FindGameObjectsWithTag("Cat").Length;
 		SetText();
 	}
 
@@ -15,8 +22,13 @@ public class GameManager : MonoBehaviour {
 		SetText();
 	}
 
-	private static void SetText()
+	public static bool IsAllCatsCollected()
 	{
-		GameObject.FindGameObjectWithTag("CatsText").GetComponent<Text>().text = $"CATS: {catsCollected}/3";
+		return catsCollected == totalCats;
+	}
+
+	static void SetText()
+	{
+		catsText.text = $"CATS: {catsCollected}/{totalCats}";
 	}
 }

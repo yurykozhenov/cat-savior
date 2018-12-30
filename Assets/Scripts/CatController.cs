@@ -3,9 +3,9 @@
 public class CatController : MonoBehaviour
 {
 	public float soundTriggerDistance = 2;
-	
-	private AudioSource audioSource;
-	private GameObject player;
+
+	AudioSource audioSource;
+	GameObject player;
 
 	// Use this for initialization
 	void Start ()
@@ -17,11 +17,8 @@ public class CatController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (player == null)
-		{
-			return;
-		}
-		
+		if (player == null) return;
+
 		var distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 		
 		audioSource.volume = distanceToPlayer < soundTriggerDistance 
@@ -29,12 +26,11 @@ public class CatController : MonoBehaviour
 			: 0;
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Player"))
-		{
-			GameManager.CollectCat();
-			Destroy(gameObject);
-		}
+		if (!other.gameObject.CompareTag("Player")) return;
+		
+		GameManager.CollectCat();
+		Destroy(gameObject);
 	}
 }

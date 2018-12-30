@@ -6,9 +6,9 @@ public class CameraController : MonoBehaviour
 	public float yThresholdStart = 1.13f;
 	public float xThresholdEnd = 17.28f;
 	public float yThresholdEnd = 5.50776f;
-	
-	private GameObject player;
-	private Vector3 offset;
+
+	GameObject player;
+	Vector3 offset;
 
 	// Use this for initialization
 	void Start ()
@@ -20,10 +20,7 @@ public class CameraController : MonoBehaviour
 	// Update is called once per frame
 	void LateUpdate ()
 	{
-		if (player == null)
-		{
-			return;
-		}
+		if (player == null) return;
 		
 		// TODO: Maybe there's a better way to lock camera to borders?
 		// Yes! Detach camera using player position, not camera position!

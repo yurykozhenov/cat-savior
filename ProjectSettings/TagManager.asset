@@ -8,6 +8,7 @@ TagManager:
   - SacrificeText
   - HealthText
   - GameOverText
+  - Cat
   layers:
   - Default
   - TransparentFX
