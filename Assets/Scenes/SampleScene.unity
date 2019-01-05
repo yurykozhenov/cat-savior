@@ -812,7 +812,7 @@ GameObject:
   - component: {fileID: 156732529}
   m_Layer: 5
   m_Name: Game over text
-  m_TagString: GameOverText
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -889,8 +889,8 @@ GameObject:
   - component: {fileID: 185983132}
   - component: {fileID: 185983131}
   m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
+  m_Name: GameController
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -907,6 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7507ef293cd95e14fa5b401c1eb88954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catsText: {fileID: 1136795535}
 --- !u!4 &185983132
 Transform:
   m_ObjectHideFlags: 0
@@ -1041,6 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe270366ebdf6241a87aea345e68a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverText: {fileID: 156732529}
 --- !u!95 &200868307
 Animator:
   serializedVersion: 3
@@ -1814,6 +1816,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 55
+  gameOverText: {fileID: 156732529}
+  healthText: {fileID: 2122490976}
 --- !u!50 &970054667
 Rigidbody2D:
   serializedVersion: 4
@@ -2001,7 +2005,7 @@ GameObject:
   - component: {fileID: 1136795535}
   m_Layer: 5
   m_Name: Cats text
-  m_TagString: CatsText
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2828,7 +2832,7 @@ GameObject:
   - component: {fileID: 2122490976}
   m_Layer: 5
   m_Name: Health text
-  m_TagString: HealthText
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

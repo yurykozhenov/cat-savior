@@ -3,20 +3,21 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 	public float moveSpeed = 2.5f;
-	public float jumpForce = 250;
+	public float jumpForce = 250.0f;
 	public bool facingRight = true;
 	public int health = 100;
-	
+
 	public Transform groundCheck;
 	public float groundRadius = 0.1f;
 	public LayerMask whatIsGround;
+	
+	public Text gameOverText;
+	public Text healthText;
+	
 	bool grounded;
 	
 	Rigidbody2D rb;
 	Animator animator;
-
-	Text gameOverText;
-	Text healthText;
 
 	static readonly int Speed = Animator.StringToHash("Speed");
 
@@ -25,9 +26,6 @@ public class PlayerController : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
-
-		healthText = GameObject.FindGameObjectWithTag("HealthText").GetComponent<Text>();
-		gameOverText = GameObject.FindGameObjectWithTag("GameOverText").GetComponent<Text>();
 
 		ChangeHealthText();
 	}

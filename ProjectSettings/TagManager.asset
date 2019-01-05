@@ -4,10 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CatsText
-  - SacrificeText
-  - HealthText
-  - GameOverText
   - Cat
   layers:
   - Default

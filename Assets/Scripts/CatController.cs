@@ -6,19 +6,19 @@ public class CatController : MonoBehaviour
 
 	AudioSource audioSource;
 	GameObject player;
+	GameController gameController;
 
 	// Use this for initialization
 	void Start ()
 	{
 		audioSource = GetComponent<AudioSource>();
 		player = GameObject.FindGameObjectWithTag("Player");
+		gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (player == null) return;
-
 		var distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 		
 		audioSource.volume = distanceToPlayer < soundTriggerDistance 
@@ -30,7 +30,7 @@ public class CatController : MonoBehaviour
 	{
 		if (!other.gameObject.CompareTag("Player")) return;
 		
-		GameManager.CollectCat();
+		gameController.CollectCat();
 		Destroy(gameObject);
 	}
 }

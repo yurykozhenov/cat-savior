@@ -20,32 +20,12 @@ public class CameraController : MonoBehaviour
 	// Update is called once per frame
 	void LateUpdate ()
 	{
-		if (player == null) return;
-		
 		// TODO: Maybe there's a better way to lock camera to borders?
 		// Yes! Detach camera using player position, not camera position!
 		var newPosition = player.transform.position + offset;
+		newPosition.x = Mathf.Clamp(newPosition.x, xThresholdStart, xThresholdEnd);
+		newPosition.y = Mathf.Clamp(newPosition.y, yThresholdStart, yThresholdEnd);
 
-		if (newPosition.x < xThresholdStart)
-		{
-			newPosition.x = xThresholdStart;
-		}
-		
-		if (newPosition.x > xThresholdEnd)
-		{
-			newPosition.x = xThresholdEnd;
-		}
-
-		if (newPosition.y < yThresholdStart)
-		{
-			newPosition.y = yThresholdStart;
-		}
-		
-		if (newPosition.y > yThresholdEnd)
-		{
-			newPosition.y = yThresholdEnd;
-		}
-		
 		transform.position = newPosition;
 	}
 }
