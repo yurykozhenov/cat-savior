@@ -5,8 +5,11 @@
 [Bb]uilds/
 [Ll]ogs/
 Assets/AssetStoreTools*
+Assets/Plugins/
+UIElementsSchema/
+Packages/
 
-# IDE's
+# IDEs
 .vs/
 .idea/
 .vscode/
@@ -27,6 +30,7 @@ ExportedObj/
 *.pdb
 *.opendb
 *.VC.db
+*.DotSettings
 
 # Unity3D generated meta files
 *.pidb.meta
