@@ -8,7 +8,6 @@ Assets/AssetStoreTools*
 Assets/Plugins/
 Assets/Plugins.meta
 UIElementsSchema/
-Packages/
 
 # IDEs
 .vs/
